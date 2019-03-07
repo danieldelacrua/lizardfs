@@ -482,7 +482,7 @@ int uRaft::scanLocalInterfaces() {
 		}
 
 		sockaddr_in *saddr = reinterpret_cast<sockaddr_in *>(ifa->ifa_addr);
-		boost::asio::ip::address addr = boost::asio::ip::address_v4(saddr->sin_addr.s_addr);
+		boost::asio::ip::address addr = boost::asio::ip::address_v4(htonl(saddr->sin_addr.s_addr));
 
 		count += findMatchingAddress(addr, id);
 	}
